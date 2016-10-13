@@ -1,0 +1,46 @@
+{
+  "name": "element-qsa-scope",
+  "version": "1.0.0",
+  "description": "Return elements matching a selector relative to the current node",
+  "main": "index.js",
+  "files": [
+    "LICENSE.md",
+    "index.js"
+  ],
+  "scripts": {
+    "test": "eslint index.js --ignore-path .gitignore && jscs index.js"
+  },
+  "repository": "jonathantneal/qsa-scope",
+  "keywords": [
+    "scope",
+    "dom",
+    "element",
+    "matches",
+    "polyfill",
+    "standard",
+    "relative",
+    "context",
+    "queries",
+    "query",
+    "selectors"
+  ],
+  "author": "Jonathan Neal <jonathantneal@hotmail.com> (http://jonathantneal.com)",
+  "license": "CC0-1.0",
+  "bugs": "https://github.com/jonathantneal/qsa-scope/issues",
+  "homepage": "https://github.com/jonathantneal/qsa-scope#readme",
+  "devDependencies": {
+    "eslint": "^3.7.1",
+    "eslint-config-10up": "github:jonathantneal/eslint-config-10up",
+    "jscs": "^3.0.7",
+    "jscs-config-10up": "github:jonathantneal/jscs-config-10up"
+  },
+  "eslintConfig": {
+    "extends": "10up",
+    "rules": {
+      "no-unused-vars": [0]
+    }
+  },
+  "jscsConfig": {
+    "preset": "10up"
+  }
+}
