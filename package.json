@@ -1,6 +1,6 @@
 {
   "name": "element-qsa-scope",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Return elements matching a selector relative to the current node",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
