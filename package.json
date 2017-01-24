@@ -2,15 +2,45 @@
   "name": "element-qsa-scope",
   "version": "1.0.0",
   "description": "Return elements matching a selector relative to the current node",
+  "author": "Jonathan Neal <jonathantneal@hotmail.com>",
+  "license": "CC0-1.0",
+  "repository": "jonathantneal/element-qsa-scope",
+  "homepage": "https://github.com/jonathantneal/element-qsa-scope#readme",
+  "bugs": "https://github.com/jonathantneal/element-qsa-scope/issues",
   "main": "index.js",
   "files": [
-    "LICENSE.md",
     "index.js"
   ],
   "scripts": {
-    "test": "eslint index.js --ignore-path .gitignore && jscs index.js"
+    "lint": "npm run lint:ec && npm run lint:js",
+    "lint:ec": "echint",
+    "lint:js": "eslint *.js --cache --ignore-pattern .gitignore",
+    "prepublish": "npm test",
+    "test": "npm run lint"
   },
-  "repository": "jonathantneal/qsa-scope",
+  "engines": {
+    "node": ">=0.12"
+  },
+  "devDependencies": {
+    "echint": "^2.1.1",
+    "echint-config-dev": "^1.0.0",
+    "eslint": "^3.14.0",
+    "eslint-config-dev": "^1.0.0"
+  },
+  "echint": {
+    "extends": "dev"
+  },
+  "eslintConfig": {
+    "extends": "dev",
+    "rules": {
+      "no-unused-vars": [
+        "error",
+        {
+          "argsIgnorePattern": "^selectors$"
+        }
+      ]
+    }
+  },
   "keywords": [
     "scope",
     "dom",
@@ -23,24 +53,5 @@
     "queries",
     "query",
     "selectors"
-  ],
-  "author": "Jonathan Neal <jonathantneal@hotmail.com> (http://jonathantneal.com)",
-  "license": "CC0-1.0",
-  "bugs": "https://github.com/jonathantneal/qsa-scope/issues",
-  "homepage": "https://github.com/jonathantneal/qsa-scope#readme",
-  "devDependencies": {
-    "eslint": "^3.7.1",
-    "eslint-config-10up": "github:jonathantneal/eslint-config-10up",
-    "jscs": "^3.0.7",
-    "jscs-config-10up": "github:jonathantneal/jscs-config-10up"
-  },
-  "eslintConfig": {
-    "extends": "10up",
-    "rules": {
-      "no-unused-vars": [0]
-    }
-  },
-  "jscsConfig": {
-    "preset": "10up"
-  }
+  ]
 }

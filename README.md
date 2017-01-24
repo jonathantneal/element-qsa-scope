@@ -1,14 +1,12 @@
-# QSA Scope
-
-> Return elements matching a selector relative to the current node
+# QSA Scope [<img src="https://resources.whatwg.org/logo-dom.svg" alt="" width="90" height="90" align="right">][QSA Scope]
 
 [![NPM Version][npm-img]][npm-url]
 [![Build Status][cli-img]][cli-url]
-[![Licensing][lic-image]][lic-url]
-[![Changelog][log-image]][log-url]
-[![Gitter Chat][git-image]][git-url]
+[![Licensing][lic-img]][lic-url]
+[![Changelog][log-img]][log-url]
+[![Gitter Chat][git-img]][git-url]
 
-[QSA Scope] is a polyfill for `:scope` support within QSA methods
+[QSA Scope] lets you return elements matching a selector relative to the current node. It is a polyfill for `:scope` support within the QSA methods
 ([`#Element.querySelector`] and [`#Element.querySelectorAll`]).
 
 ```html
@@ -55,21 +53,20 @@ li.querySelector(':scope li a'); // returns <a>Sublink</a> due to its context
 
 Additional [tests](http://codepen.io/jonneal/details/e20f8ddced5f5ed111a1e1f3044d4d47) were run against the latest 3 versions of browsers, including common outliers such as Internet Explorer 8+ and Safari 6+.
 
-[Native Support](https://app.crossbrowsertesting.com/public/i76b092cd2b52b86/screenshots/zfe6755a18f932b6386b?size=small&type=chromeless)
-[Polyfilled Support](https://app.crossbrowsertesting.com/public/i76b092cd2b52b86/screenshots/ze21b99d139fd4e51127?size=small&type=chromeless)
-
-[QSA Scope]: http://github.com/jonathantneal/element-qsa-scope
+[Native Support](https://app.crossbrowsertesting.com/public/i76b092cd2b52b86/screenshots/zfe6755a18f932b6386b?size=small&type=chromeless) · [Polyfilled Support](https://app.crossbrowsertesting.com/public/i76b092cd2b52b86/screenshots/ze21b99d139fd4e51127?size=small&type=chromeless)
 
 [npm-url]: https://www.npmjs.com/package/element-qsa-scope
-[npm-img]: https://img.shields.io/npm/v/element-qsa-scope.svg?style=flat-square
+[npm-img]: https://img.shields.io/npm/v/element-qsa-scope.svg
 [cli-url]: https://travis-ci.org/jonathantneal/element-qsa-scope
-[cli-img]: https://img.shields.io/travis/jonathantneal/element-qsa-scope.svg?style=flat-square
+[cli-img]: https://img.shields.io/travis/jonathantneal/element-qsa-scope.svg
 [lic-url]: LICENSE.md
-[lic-image]: https://img.shields.io/npm/l/element-qsa-scope.svg?style=flat-square
+[lic-img]: https://img.shields.io/npm/l/element-qsa-scope.svg
 [log-url]: CHANGELOG.md
-[log-image]: https://img.shields.io/badge/changelog-md-blue.svg?style=flat-square
+[log-img]: https://img.shields.io/badge/changelog-md-blue.svg
 [git-url]: https://gitter.im/jonathantneal/element-qsa-scope
-[git-image]: https://img.shields.io/badge/chat-gitter-blue.svg?style=flat-square
+[git-img]: https://img.shields.io/badge/chat-gitter-blue.svg
+
+[QSA Scope]: http://github.com/jonathantneal/element-qsa-scope
 
 [`#Element.matches`]: https://dom.spec.whatwg.org/#dom-element-matches
 [`#Element.querySelector`]: https://dom.spec.whatwg.org/#dom-parentnode-queryselector
