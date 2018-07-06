@@ -1,6 +1,6 @@
 {
   "name": "element-qsa-scope",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Return elements matching a selector relative to the current node",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
@@ -18,17 +18,10 @@
     "prepublish": "npm test",
     "test": "npm run lint"
   },
-  "engines": {
-    "node": ">=0.12"
-  },
   "devDependencies": {
-    "echint": "^2.1.1",
-    "echint-config-dev": "^1.0.0",
-    "eslint": "^3.14.0",
-    "eslint-config-dev": "^1.0.0"
-  },
-  "echint": {
-    "extends": "dev"
+    "echint": "^4.0.1",
+    "eslint": "^5.0.1",
+    "eslint-config-dev": "^2.0.0"
   },
   "eslintConfig": {
     "extends": "dev",
