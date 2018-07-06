@@ -1,59 +1,71 @@
 try {
 	// test for scope support
-	document.createElement('a').querySelector(':scope *');
+	document.querySelector(':scope *');
 } catch (error) {
-	(function () {
+	(function (ElementPrototype) {
 		// scope regex
-		var scope = /:scope\b/gi;
+		var scope = /:scope(?![\w-])/gi;
 
-		// polyfilled <Element>.querySelector
-		var querySelectorWithScope = polyfill(Element.prototype.querySelector);
+		// polyfill Element#querySelector
+		var querySelectorWithScope = polyfill(ElementPrototype.querySelector);
 
-		Element.prototype.querySelector = function querySelector(selectors) {
+		ElementPrototype.querySelector = function querySelector(selectors) {
 			return querySelectorWithScope.apply(this, arguments);
 		};
 
-		// polyfilled <Element>.querySelectorAll
-		var querySelectorAllWithScope = polyfill(Element.prototype.querySelectorAll);
+		// polyfill Element#querySelectorAll
+		var querySelectorAllWithScope = polyfill(ElementPrototype.querySelectorAll);
 
-		Element.prototype.querySelectorAll = function querySelectorAll(selectors) {
+		ElementPrototype.querySelectorAll = function querySelectorAll(selectors) {
 			return querySelectorAllWithScope.apply(this, arguments);
 		};
 
-		function polyfill(originalQuerySelector) {
+		// polyfill Element#matches
+		if (ElementPrototype.matches) {
+			var matchesWithScope = polyfill(ElementPrototype.matches);
+
+			ElementPrototype.matches = function matches(selectors) {
+				return matchesWithScope.apply(this, arguments);
+			};
+		}
+
+		// polyfill Element#closest
+		if (ElementPrototype.closest) {
+			var closestWithScope = polyfill(ElementPrototype.closest);
+
+			ElementPrototype.closest = function closest(selectors) {
+				return closestWithScope.apply(this, arguments);
+			};
+		}
+
+		function polyfill(qsa) {
 			return function (selectors) {
-				// whether selectors contain :scope
+				// whether the selectors contain :scope
 				var hasScope = selectors && scope.test(selectors);
 
 				if (hasScope) {
-					// element id
-					var id = this.getAttribute('id');
+					// fallback attribute
+					var attr = 'q' + Math.floor(Math.random() * 9000000) + 1000000;
 
-					if (!id) {
-						// update id if falsey or missing
-						this.id = 'q' + Math.floor(Math.random() * 9000000) + 1000000;
-					}
+					// replace :scope with the fallback attribute
+					arguments[0] = selectors.replace(scope, '[' + attr + ']');
 
-					// modify arguments
-					arguments[0] = selectors.replace(scope, '#' + this.id);
+					// add the fallback attribute
+					this.setAttribute(attr, '');
 
-					// result of the original query selector
-					var elementOrNodeList = originalQuerySelector.apply(this, arguments);
+					// results of the qsa
+					var elementOrNodeList = qsa.apply(this, arguments);
 
-					if (id === null) {
-						// remove id if missing
-						this.removeAttribute('id');
-					} else if (!id) {
-						// restore id if falsey
-						this.id = id;
-					}
+					// remove the fallback attribute
+					this.removeAttribute(attr);
 
+					// return the results of the qsa
 					return elementOrNodeList;
 				} else {
-					// result of the original query sleector
-					return originalQuerySelector.apply(this, arguments);
+					// return the results of the qsa
+					return qsa.apply(this, arguments);
 				}
 			};
 		}
-	})();
+	})(Element.prototype);
 }
