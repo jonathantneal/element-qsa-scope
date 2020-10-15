@@ -9,7 +9,8 @@
   "bugs": "https://github.com/jonathantneal/element-qsa-scope/issues",
   "main": "index.js",
   "files": [
-    "index.js"
+    "index.js",
+    "without-feature-detect.js"
   ],
   "scripts": {
     "lint": "npm run lint:ec && npm run lint:js",
