@@ -1,3 +1,4 @@
+// Exact copy of "index.js" without the feature detection.
 (function (ElementPrototype) {
 		// scope regex
 		var scope = /:scope(?![\w-])/gi;
